@@ -1,0 +1,66 @@
+@import "./typography.scss";
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+}
+
+.nav_container {
+  display: flex;
+  height: 100%;
+  padding: 30px 60px;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100px;
+  background-color: black;
+  max-width: 100%;
+}
+
+.navbar_list {
+  list-style: none;
+  display: flex;
+  margin-left: auto;
+}
+
+.my_name {
+  color: white;
+  font-family: "Fira Code Medium";
+  font-size: 30px;
+  font-weight: bold;
+  display: block;
+  margin-top: 7px;
+}
+
+@mixin fira {
+  font-family: "Fira Code Medium";
+  font-size: 20px;
+  font-weight: 500;
+  color: #64ffda;
+  margin-left: 32px;
+  cursor: pointer;
+}
+.about_header {
+  @include fira;
+}
+
+.experience_header {
+  @include fira;
+}
+
+.projects_header {
+  @include fira;
+}
+
+.contact_header {
+  @include fira;
+}
+
+.dropdown_menu {
+  margin-left: 32px;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}

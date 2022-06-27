@@ -1,50 +1,42 @@
-.hero_section
-{
-    min-height: 85vh;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
+.hero_section {
+  min-height: 85vh;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
 }
 
-.hero_intro
-{
-    color: white;
-    font-family: Fira Code;
-    display: inline-block;
+.hero_intro {
+  color: white;
+  font-family: "Fira Code Medium";
+  display: inline-block;
 }
 
-.greeting
-{
-    
-    font-size: 20px;
-    font-weight: 500;
+.greeting {
+  font-size: 20px;
+  font-weight: 500;
 }
 
-.hero_name
-{
-    margin-top: 20px;
-    font-size: 60px;
-    font-weight: bold;
+.hero_name {
+  margin-top: 20px;
+  font-size: 60px;
+  font-weight: bold;
 }
 
-.software_engineer
-{
-    margin-top: 20px;
-    font-weight: bold;
-    font-size: 30px;
-    color: #64FFDA;
+.software_engineer {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 30px;
+  color: #64ffda;
 }
 
-.hero_elab
-{
-    margin-top: 20px;
-    display: block;
-    width: 396px;
-    font-size: 20px;
+.hero_elab {
+  margin-top: 20px;
+  display: block;
+  width: 396px;
+  font-size: 20px;
 }
 
-.canvas_container
-{
-    width: 800px;
+.canvas_container {
+  width: 800px;
 }

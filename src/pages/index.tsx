@@ -4,10 +4,9 @@ import Navbar from "../components/Navbar";
 import Hero from "../components/sections/Hero";
 import * as styles from "../styles/Home.module.scss";
 
-// styles
 export default function Main() {
   return (
-    <main className={styles.Container}>
+    <main>
       <Layout>
         <Hero />
       </Layout>

@@ -1,0 +1,12 @@
+@import "./typography.scss";
+
+.cardContainer {
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 4px 6px;
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 16px;
+  display: inline-block;
+  margin: 0 8px 8px 0;
+}

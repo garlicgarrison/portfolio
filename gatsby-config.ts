@@ -14,7 +14,7 @@ const config: GatsbyConfig = {
     options: {
       "icon": "src/images/icon.png"
     }
-  }, "gatsby-plugin-mdx", "gatsby-transformer-remark", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
+  }, "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
       resolve: 'gatsby-source-filesystem',
       options: {
         "name": "images",
@@ -34,6 +34,11 @@ const config: GatsbyConfig = {
         name: "markdown",
         path: `${__dirname}/src/markdowns/`,
       },
+    }, {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: [`gatsby-remark-mathjax`,]
+      }
     }]
 };
 

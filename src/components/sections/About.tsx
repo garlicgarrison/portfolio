@@ -5,6 +5,8 @@ import useStaticQueryTable, {
   createMarkdownArrayTableSync,
 } from "../hooks/useStaticQueryTable";
 import * as style from "../../styles/sections/About.module.scss";
+import PaperCard from "../cards/PaperCard";
+import Helmet from "react-helmet";
 
 type Skill = {
   skill: string;
@@ -17,8 +19,42 @@ type SkillMap = {
 export default function About() {
   const data = useStaticQuery(
     graphql`
-      query {
-        allMarkdownRemark(filter: { fileAbsolutePath: { regex: "about/" } }) {
+      query SkillsQuery {
+        skills: allMarkdownRemark(
+          filter: {
+            fileAbsolutePath: { regex: "about/" }
+            frontmatter: { type: { eq: "skills" } }
+          }
+        ) {
+          edges {
+            node {
+              rawMarkdownBody
+            }
+          }
+        }
+        education: allMarkdownRemark(
+          filter: {
+            fileAbsolutePath: { regex: "about/" }
+            frontmatter: { type: { eq: "education" } }
+          }
+        ) {
+          edges {
+            node {
+              frontmatter {
+                school
+                major
+                minor
+                gpa
+              }
+            }
+          }
+        }
+        papers: allMarkdownRemark(
+          filter: {
+            fileAbsolutePath: { regex: "about/" }
+            frontmatter: { type: { eq: "papers" } }
+          }
+        ) {
           edges {
             node {
               rawMarkdownBody
@@ -29,10 +65,9 @@ export default function About() {
     `
   );
   const skills = {} as SkillMap;
-  const rawMarkDown = data.allMarkdownRemark.edges[0].node.rawMarkdownBody;
-
-  if (rawMarkDown) {
-    const table = createMarkdownArrayTableSync(rawMarkDown);
+  const skillRawMarkDown = data.skills.edges[0].node.rawMarkdownBody;
+  if (skillRawMarkDown) {
+    const table = createMarkdownArrayTableSync(skillRawMarkDown);
     for (const row of table.rows) {
       if (!skills[row[2]]) {
         skills[row[2]] = [];
@@ -41,8 +76,26 @@ export default function About() {
     }
   }
 
+  const papers = [];
+  const papersRawMarkDown = data.papers.edges[0].node.rawMarkdownBody;
+  if (papersRawMarkDown) {
+    const table = createMarkdownArrayTableSync(papersRawMarkDown);
+    for (const row of table.rows) {
+      papers.push(row);
+    }
+  }
+
+  const education = data.education.edges[0].node.frontmatter;
+
   return (
     <div className={style.about_section}>
+      <Helmet>
+        <script
+          type="text/javascript"
+          id="MathJax-script"
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest?tex-mml-chtml.js"
+        ></script>
+      </Helmet>
       <div className={style.about_grid_container}>
         {/* TECHNOLOGIES */}
         <div className={style.technologies_container}>
@@ -94,6 +147,48 @@ export default function About() {
               );
             })}
           </div>
+        </div>
+
+        {/* EDUCATION */}
+        <div className={style.education_container}>
+          <div className={style.card_header}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+            >
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"></path>
+            </svg>
+            <h5>Education</h5>
+          </div>
+          <h3>{education.school}</h3>
+          <span>Major: {education.major}</span>
+          <br />
+          <span>Minor: {education.minor}</span>
+          <br />
+          <span>GPA: {education.gpa}</span>
+        </div>
+
+        {/* PAPERS */}
+        <div className={style.papers_container}>
+          <div className={style.card_header}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+            >
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"></path>
+            </svg>
+            <h5>Papers</h5>
+          </div>
+
+          {papers.map((paper) => {
+            return <PaperCard paper={paper} />;
+          })}
         </div>
       </div>
     </div>

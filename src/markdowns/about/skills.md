@@ -1,5 +1,5 @@
 ---
-skill: hah
+type: skills
 ---
 
 | skill        | color   | type     |

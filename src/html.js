@@ -1,6 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+export const MATHJAX_CONFIG = `MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  },
+  SVG: { linebreaks: { automatic: true } }
+})`;
+
 export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>
@@ -12,10 +25,13 @@ export default function HTML(props) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         {props.headComponents}
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
         <script
           type="text/javascript"
+          defer
           id="MathJax-script"
-          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest?tex-mml-chtml.js"
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+          dangerouslySetInnerHTML={{ __html: MATHJAX_CONFIG }}
         ></script>
       </head>
       <body {...props.bodyAttributes}>

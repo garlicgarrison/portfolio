@@ -89,13 +89,9 @@ export default function About() {
 
   return (
     <div className={style.about_section}>
-      <Helmet>
-        <script
-          type="text/javascript"
-          id="MathJax-script"
-          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest?tex-mml-chtml.js"
-        ></script>
-      </Helmet>
+      {/* <Helmet>
+      <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+      </Helmet> */}
       <div className={style.about_grid_container}>
         {/* TECHNOLOGIES */}
         <div className={style.technologies_container}>

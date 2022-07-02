@@ -7,6 +7,7 @@ import useStaticQueryTable, {
 import * as style from "../../styles/sections/About.module.scss";
 import PaperCard from "../cards/PaperCard";
 import Helmet from "react-helmet";
+import ExperienceCard from "../cards/ExperienceCard";
 
 type Skill = {
   skill: string;
@@ -61,6 +62,22 @@ export default function About() {
             }
           }
         }
+        experience: allMarkdownRemark(
+          filter: {
+            fileAbsolutePath: { regex: "about/" }
+            frontmatter: { type: { eq: "experience" } }
+          }
+        ) {
+          edges {
+            node {
+              frontmatter {
+                company
+                project
+                description
+              }
+            }
+          }
+        }
       }
     `
   );
@@ -86,6 +103,10 @@ export default function About() {
   }
 
   const education = data.education.edges[0].node.frontmatter;
+
+  const experiences = data.experience.edges as Array<any>;
+
+  console.log("experiences", experiences);
 
   return (
     <div className={style.about_section}>
@@ -188,7 +209,23 @@ export default function About() {
         </div>
 
         {/* Experience */}
-        <div className={style.experience_container}></div>
+        <div className={style.experience_container}>
+          <div className={style.card_header}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+            >
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"></path>
+            </svg>
+            <h5>Experience</h5>
+          </div>
+          {experiences.map((exp) => {
+            return <ExperienceCard experience={exp.node.frontmatter} />;
+          })}
+        </div>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import React from "react";
 import * as style from "../../styles/components/PaperCard.module.scss";
 

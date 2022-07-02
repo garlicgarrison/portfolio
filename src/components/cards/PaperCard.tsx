@@ -12,7 +12,7 @@ export default function PaperCard({ paper }: PaperCardProps) {
     <div className={style.paper_container}>
       <h4>{title}</h4>
       <h5>{field}</h5>
-      <div dangerouslySetInnerHTML={{ __html: description }}></div>
+      <p dangerouslySetInnerHTML={{ __html: description }}></p>
     </div>
   );
 }

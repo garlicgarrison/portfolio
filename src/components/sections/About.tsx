@@ -186,6 +186,9 @@ export default function About() {
             return <PaperCard paper={paper} />;
           })}
         </div>
+
+        {/* Experience */}
+        <div className={style.experience_container}></div>
       </div>
     </div>
   );

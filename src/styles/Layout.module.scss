@@ -1,5 +1,10 @@
+@import "./include-media.scss";
 .layout_div {
-  padding: 0 150px 1.45rem;
+  padding: 0 2rem 1.45rem;
   left: 0;
   margin: 100px auto;
+  @include media("<=tablet") {
+    margin: 50px auto;
+    padding: 0 20px 1.45rem;
+  }
 }

@@ -1,3 +1,5 @@
+@import "./include-media.scss";
+
 .about_section {
   width: 100%;
   align-items: center;
@@ -25,6 +27,15 @@
     "technology experience papers"
     "technology experience papers"
     "education experience papers";
+  @include media("<=desktop") {
+    gap: 30px 0px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "technology"
+      "education"
+      "experience"
+      "papers";
+  }
 }
 
 .technologies_container {

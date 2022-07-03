@@ -1,4 +1,5 @@
 @import "./typography.scss";
+@import "./include-media.scss";
 
 .navbar {
   position: fixed;
@@ -12,17 +13,22 @@
   display: flex;
   height: 100%;
   padding: 30px 60px;
+  @include media("<=tablet") {
+    padding: 10px 20px;
+  }
   margin: 0;
   box-sizing: border-box;
   height: 100px;
   background-color: black;
-  max-width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  //max-width: 100%;
 }
 
 .navbar_list {
   list-style: none;
   display: flex;
-  margin-left: auto;
+  //margin-left: auto;
 }
 
 .my_name {
@@ -31,14 +37,25 @@
   font-weight: bold;
   display: block;
   margin-top: 7px;
+  @include media("<=tablet") {
+    font-size: 24px;
+  }
 }
 
 @mixin fira {
   font-family: "Fira Code Medium";
   font-size: 20px;
+  margin-left: 32px;
+  @include media("<=tablet") {
+    font-size: 14px;
+    margin-left: 22px;
+  }
+  @include media("<=phone") {
+    font-size: 12px;
+    margin-left: 20px;
+  }
   font-weight: 500;
   color: #64ffda;
-  margin-left: 32px;
   cursor: pointer;
 }
 .about_header {

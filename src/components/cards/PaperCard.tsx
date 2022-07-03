@@ -12,11 +12,19 @@ export default function PaperCard({ paper }: PaperCardProps) {
   console.log("link", `static/problem_${link}/`);
 
   return (
-    <div className={style.paper_container}>
+    <div className={style.paper_container} key={`title__${title}`}>
       <h4>{title}</h4>
       <h5>{field}</h5>
       <p dangerouslySetInnerHTML={{ __html: description }}></p>
-      <Link to={`static/problem_${link}`}>See my solution</Link>
+
+      <a
+        href={`/problem_${link}`}
+        target="_blank"
+        rel="nofollow noopener noreferrer"
+        onClick={() => console.log("hi")}
+      >
+        See my solution
+      </a>
     </div>
   );
 }

@@ -1,5 +1,13 @@
 .paper_container {
   color: white;
+  z-index: 0;
+  a {
+    z-index: 9999999999;
+    cursor: pointer;
+    color: #64ffda;
+    text-decoration: none;
+    display: inline-block;
+  }
 }
 
 p {

@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import Navbar from "./Navbar";
 import * as styles from "../styles/Layout.module.scss";
 
-console.log(styles);
-
 const Layout = ({ children }: any) => {
   return (
     <>
